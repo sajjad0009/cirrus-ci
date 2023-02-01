@@ -1,7 +1,7 @@
 # sync rom
-repo init --depth=1 --no-repo-verify -u https://github.com/Sa-Sajjad/android_manifest_nusa.git -b 10 -g default,-mips,-darwin,-notdefault
+repo init -u https://github.com/Sa-Sajjad/android_manifest_nusa -b 10
 git clone https://github.com/qwry3657/manifest.git --depth 1 -b main .repo/local_manifests
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+repo sync -c --force-sync --no-tags --no-clone-bundle
 
 # build rom
 source build/envsetup.sh
