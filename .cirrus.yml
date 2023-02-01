@@ -15,9 +15,9 @@ task:
           - /home/cirrus/roms:/home/cirrus/roms
           - /home/cirrus/ccache:/home/cirrus/ccache
           - /home/cirrus/.config:/home/cirrus/.config
-show_script:
+  show_script:
     - cat $CIRRUS_WORKING_DIR/build_rom.sh
-sync_script:
+  sync_script:
     - set -e
     - rom_name=Nusa
     - mkdir -p ~/roms/$rom_name
@@ -27,7 +27,7 @@ sync_script:
     - only_sync=$(grep 'repo sync' $CIRRUS_WORKING_DIR/build_rom.sh)
     - bash -c "$command" || true
     
-build_script:
+  build_script:
     - set -e
     - rom_name=Nusa
     - device=$(grep unch $CIRRUS_WORKING_DIR/build_rom.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1)
@@ -45,7 +45,7 @@ build_script:
     - command=$(tail $CIRRUS_WORKING_DIR/build_rom.sh -n +$(expr $(grep 'build/envsetup.sh' $CIRRUS_WORKING_DIR/build_rom.sh -n | cut -f1 -d:) - 1)| head -n -1 | grep -v 'rclone copy')
     - bash -c "$command"
     
-ccache_stats_script:
+  ccache_stats_script:
     - set -e
     - rom_name=Nusa
     - device=$(grep unch $CIRRUS_WORKING_DIR/build_rom.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1)
