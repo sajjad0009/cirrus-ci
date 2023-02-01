@@ -1,6 +1,6 @@
 env:
-    token: ""
-    chat_id: ""
+    CIRRUS_CLONE_DEPTH: 1
+    BUILD_HOSTNAME: "cirrus-ci.org"
     
 task:
   name: "Test"
@@ -15,7 +15,7 @@ task:
           - /home/cirrus/roms:/home/cirrus/roms
           - /home/cirrus/ccache:/home/cirrus/ccache
           - /home/cirrus/.config:/home/cirrus/.config
-show_script:
+  show_script:
     - cat $CIRRUS_WORKING_DIR/build_rom.sh
   sync_script:
     - set -e
