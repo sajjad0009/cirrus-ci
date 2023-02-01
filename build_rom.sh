@@ -1,6 +1,6 @@
 # sync rom
 repo init -u https://github.com/Sa-Sajjad/android_manifest_nusa -b 10
-git clone https://github.com/Sa-Sajjad/manifest --depth 1 -b main .repo/local_manifests
+git clone https://github.com/Sa-Sajjad/manifest.git --depth 1 -b main .repo/local_manifests
 repo sync -c --force-sync --no-tags --no-clone-bundle
 
 # build rom
