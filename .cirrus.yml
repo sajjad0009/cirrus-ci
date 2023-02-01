@@ -1,12 +1,10 @@
 env:
-    CIRRUS_CLONE_DEPTH: 1
-    BUILD_HOSTNAME: "cirrus-ci.org"
     token: ""
     chat_id: ""
     
 task:
   name: "Test"
-  timeout_in: 20m
+  timeout_in: 120m
   container:
       image: nexgang/ubuntu:latest
       cpu: 8
