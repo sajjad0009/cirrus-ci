@@ -4,13 +4,8 @@ env:
 
 task:
   name: Build
-  only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
-  depends_on:
-    - Test
   timeout_in: 4h
   persistent_worker:
-    labels:
-      name: AX61-1
     isolation:
       container:
         image: apon77/aosp:cirrus
