@@ -1,7 +1,6 @@
 persistent_worker:
   isolation:
-    tart:
-      image: ghcr.io/cirruslabs/macos-monterey-base:latest
+      image: apon77/aosp:cirrus
       user: admin
       password: admin
 
