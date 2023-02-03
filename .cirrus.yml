@@ -12,8 +12,8 @@ task:
     isolation:
       container:
       image: apon77/aosp:cirrus
-      cpu: 8
-      memory: 32G
+      cpu: 24
+      memory: 120G
       stateful: true
       greedy: true
       volumes:
