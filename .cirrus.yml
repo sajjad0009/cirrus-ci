@@ -5,11 +5,8 @@ env:
     one: "ENCRYPTED[267097e8096e1e12efc9c6e71626703ddc8ae1c6730511b6207586a045e2dd3bd59dd0b9d632642fc58d89913cc539a8]"
 
 task:
-  name: Build
-  skip: $CIRRUS_BRANCH == 'main'
-  only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
-  depends_on:
-    - Test
+  name: test
+  only_if: $CIRRUS_REPO_OWNER == 'sajjad0009'
   timeout_in: 4h
   persistent_worker:
     labels:
