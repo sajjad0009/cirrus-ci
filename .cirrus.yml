@@ -1,25 +1,21 @@
-env:
-    CIRRUS_CLONE_DEPTH: 1
-    BUILD_HOSTNAME: "cirrus-ci.org"
-    bot_api: "ENCRYPTED[d5f8289d835b201789b2b31e728d0cd82a100f1b47ddec69dd6ba49a3712fcfa2719b220fc6a8894865df517a78332ca]"
-    one: "ENCRYPTED[267097e8096e1e12efc9c6e71626703ddc8ae1c6730511b6207586a045e2dd3bd59dd0b9d632642fc58d89913cc539a8]"
+persistent_worker:
+  isolation:
+    tart:
+      image: ghcr.io/cirruslabs/macos-monterey-base:latest
+      user: admin
+      password: admin
+
+  resources:
+    tart-vms: 1
 
 task:
-  name: test
-  only_if: $CIRRUS_REPO_OWNER == 'sajjad0009'
-  timeout_in: 4h
-  persistent_worker:
-    labels:
-      name: AX61-1
-    isolation:
-      container:
-        image: apon77/aosp:cirrus
-        cpu: 24
-        memory: 120G
-        volumes:
-          - /home/cirrus/roms:/home/cirrus/roms
-          - /home/cirrus/ccache:/home/cirrus/ccache
-          - /home/cirrus/.config:/home/cirrus/.config
+  name: Test
+  script: make test
 
-  show_script:
-    - cat $CIRRUS_WORKING_DIR/build_rom.sh
+task:
+  name: Build
+  script: make build
+
+task:
+  name: Release
+  script: make release
