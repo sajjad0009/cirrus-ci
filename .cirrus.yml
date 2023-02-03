@@ -4,6 +4,7 @@ env:
     
 task:
   name: "Compile Rom"
+  skip: $CIRRUS_BRANCH == '1'
   timeout_in: 4h
   container:
       image: apon77/aosp:cirrus
