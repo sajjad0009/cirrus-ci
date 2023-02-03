@@ -3,13 +3,23 @@ env:
     BUILD_HOSTNAME: "cirrus-ci.org"
 
 task:
-  name: Test
-  timeout_in: 2m
-  persistent_worker: {}
+  name: Build
+  only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
+  depends_on:
+    - Test
+  timeout_in: 4h
+  persistent_worker:
+    labels:
+      name: AX61-1
+    isolation:
       container:
         image: apon77/aosp:cirrus
-        cpu: 2
-        memory: 4G
+        cpu: 24
+        memory: 120G
+        volumes:
+          - /home/cirrus/roms:/home/cirrus/roms
+          - /home/cirrus/ccache:/home/cirrus/ccache
+          - /home/cirrus/.config:/home/cirrus/.config
 
   env_script:
     - env
