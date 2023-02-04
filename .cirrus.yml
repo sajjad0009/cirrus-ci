@@ -5,6 +5,7 @@ env:
 task:
   name: Build
   timeout_in: 4h
+  persistent_worker: {}
 
   env_script:
     - env
