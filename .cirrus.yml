@@ -5,16 +5,6 @@ env:
 task:
   name: Build
   timeout_in: 4h
-  persistent_worker:
-    isolation:
-      container:
-        image: apon77/aosp:cirrus
-        cpu: 24
-        memory: 120G
-        volumes:
-          - /home/cirrus/roms:/home/cirrus/roms
-          - /home/cirrus/ccache:/home/cirrus/ccache
-          - /home/cirrus/.config:/home/cirrus/.config
 
   env_script:
     - env
