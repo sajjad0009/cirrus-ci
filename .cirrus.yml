@@ -1,20 +1,6 @@
-persistent_worker:
-  isolation:
-      image: apon77/aosp:cirrus
-      user: admin
-      password: admin
-
-  resources:
-    tart-vms: 1
-
 task:
-  name: Test
-  script: make test
-
-task:
-  name: Build
-  script: make build
-
-task:
-  name: Release
-  script: make release
+  persistent_worker:
+    labels:
+      os: darwin
+      arch: arm64
+  script: echo "running on-premise"
